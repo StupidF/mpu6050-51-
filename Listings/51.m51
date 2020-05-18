@@ -1,0 +1,144 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/25/2020  07:16:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\51 PRINT (.\Listings\51.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?CSTPTR)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\51 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?MAIN
+            DATA    0010H     0005H     UNIT         _DATA_GROUP_
+                    0015H     000BH                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00FFH     UNIT         ?PR?_LCD_PRINTF?MAIN
+            CODE    0102H     009DH     UNIT         ?C?LIB_CODE
+            CODE    019FH     008EH     UNIT         ?PR?MAIN?MAIN
+            CODE    022DH     0023H     UNIT         ?PR?_SINGLE_READI2C?MAIN
+            CODE    0250H     0022H     UNIT         ?PR?INITMPU6050?MAIN
+            CODE    0272H     0020H     UNIT         ?PR?_DELAY?MAIN
+            CODE    0292H     001EH     UNIT         ?PR?I2C_RECVBYTE?MAIN
+            CODE    02B0H     001DH     UNIT         ?PR?_DISPLAY10BITDATA?MAIN
+            CODE    02CDH     001BH     UNIT         ?PR?_I2C_SENDBYTE?MAIN
+            CODE    02E8H     001AH     UNIT         ?PR?_GETDATA?MAIN
+            CODE    0302H     0019H     UNIT         ?PR?INIT_UART?MAIN
+            CODE    031BH     0019H     UNIT         ?PR?DELAY5US?MAIN
+            CODE    0334H     0017H     UNIT         ?PR?_SERIPUSHSEND?MAIN
+            CODE    034BH     0017H     UNIT         ?PR?_SINGLE_WRITEI2C?MAIN
+            CODE    0362H     000FH     UNIT         ?PR?I2C_START?MAIN
+            CODE    0371H     000EH     UNIT         ?PR?I2C_SENDACK?MAIN
+            CODE    037FH     000DH     UNIT         ?PR?I2C_RECVACK?MAIN
+            CODE    038CH     000CH     UNIT         ?PR?I2C_STOP?MAIN
+            CODE    0398H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\51 (MAIN)
+
+
+SEGMENT                               BIT_GROUP          DATA_GROUP 
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/25/2020  07:16:09  PAGE 2
+
+
+  +--> CALLED SEGMENT              START    LENGTH     START    LENGTH
+----------------------------------------------------------------------
+?C_C51STARTUP                      -----    -----      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                      -----    -----      -----    -----
+  +--> ?PR?_DELAY?MAIN
+  +--> ?PR?INIT_UART?MAIN
+  +--> ?PR?INITMPU6050?MAIN
+  +--> ?PR?_SERIPUSHSEND?MAIN
+  +--> ?PR?_GETDATA?MAIN
+  +--> ?PR?_DISPLAY10BITDATA?MAIN
+
+?PR?INITMPU6050?MAIN               -----    -----      -----    -----
+  +--> ?PR?_SINGLE_WRITEI2C?MAIN
+
+?PR?_SINGLE_WRITEI2C?MAIN          -----    -----      -----    -----
+  +--> ?PR?I2C_START?MAIN
+  +--> ?PR?_I2C_SENDBYTE?MAIN
+  +--> ?PR?I2C_STOP?MAIN
+
+?PR?I2C_START?MAIN                 -----    -----      -----    -----
+  +--> ?PR?DELAY5US?MAIN
+
+?PR?_I2C_SENDBYTE?MAIN             -----    -----      -----    -----
+  +--> ?PR?DELAY5US?MAIN
+  +--> ?PR?I2C_RECVACK?MAIN
+
+?PR?I2C_RECVACK?MAIN               -----    -----      -----    -----
+  +--> ?PR?DELAY5US?MAIN
+
+?PR?I2C_STOP?MAIN                  -----    -----      -----    -----
+  +--> ?PR?DELAY5US?MAIN
+
+?PR?_GETDATA?MAIN                  -----    -----      -----    -----
+  +--> ?PR?_SINGLE_READI2C?MAIN
+
+?PR?_SINGLE_READI2C?MAIN           -----    -----      -----    -----
+  +--> ?PR?I2C_START?MAIN
+  +--> ?PR?_I2C_SENDBYTE?MAIN
+  +--> ?PR?I2C_RECVBYTE?MAIN
+  +--> ?PR?I2C_SENDACK?MAIN
+  +--> ?PR?I2C_STOP?MAIN
+
+?PR?I2C_RECVBYTE?MAIN              -----    -----      -----    -----
+  +--> ?PR?DELAY5US?MAIN
+
+?PR?I2C_SENDACK?MAIN               0020H.0  0000H.1    -----    -----
+  +--> ?PR?DELAY5US?MAIN
+
+?PR?_DISPLAY10BITDATA?MAIN         -----    -----      -----    -----
+  +--> ?PR?_LCD_PRINTF?MAIN
+  +--> ?PR?_SERIPUSHSEND?MAIN
+
+?PR?_LCD_PRINTF?MAIN               -----    -----      0010H    0005H
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/25/2020  07:16:09  PAGE 3
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\51 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C?CSTPTR
+  C:0102H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?SIDIV
+  C:0114H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:014AH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=22.1 xdata=0 code=932
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
